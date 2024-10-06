@@ -41,7 +41,7 @@ namespace LA
 #include <deal.II/lac/vector.h>
 #include <deal.II/lac/full_matrix.h>
 #include <deal.II/lac/solver_cg.h>
-#include <deal.II/lac/constraint_matrix.h>
+#include <deal.II/lac/affine_constraints.h>
 #include <deal.II/lac/compressed_simple_sparsity_pattern.h>
 
 #include <deal.II/lac/petsc_parallel_sparse_matrix.h>
@@ -111,7 +111,7 @@ namespace ParallelLaplace
     IndexSet                                  locally_owned_dofs;
     IndexSet                                  locally_relevant_dofs;
 
-    ConstraintMatrix                          constraints;
+    AffineConstraints<double>                          constraints;
 
     LA::MPI::SparseMatrix system_matrix;
     LA::MPI::Vector locally_relevant_solution;

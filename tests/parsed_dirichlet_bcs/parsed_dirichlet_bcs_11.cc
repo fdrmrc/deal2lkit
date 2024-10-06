@@ -54,7 +54,7 @@ test(const Triangulation<dim> &tr, const FiniteElement<dim> &fe)
 
   deallog << "FE=" << fe.get_name() << std::endl;
 
-  ConstraintMatrix             cm;
+  AffineConstraints<double>    cm;
   ParsedDirichletBCs<dim, dim> parsed_dirichlet(
     "ParsedDirichletBCs",
     dim + 1,

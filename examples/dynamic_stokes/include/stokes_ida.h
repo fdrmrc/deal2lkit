@@ -163,8 +163,8 @@ private:
   shared_ptr<FiniteElement<dim, dim>>                        fe;
   shared_ptr<DoFHandler<dim, dim>>                           dof_handler;
 
-  ConstraintMatrix constraints;
-  ConstraintMatrix constraints_dot;
+  AffineConstraints<double> constraints;
+  AffineConstraints<double> constraints_dot;
 
   TrilinosWrappers::BlockSparsityPattern jacobian_matrix_sp;
   TrilinosWrappers::BlockSparseMatrix    jacobian_matrix;

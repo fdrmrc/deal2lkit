@@ -56,7 +56,7 @@ test(const Triangulation<dim> &tr, const FiniteElement<dim> &fe)
 
   deallog << "FE=" << fe.get_name() << std::endl;
 
-  ConstraintMatrix cm;
+  AffineConstraints<double> cm;
   //   std::set<types::boundary_id> boundary_ids;
   //   for (unsigned int j=0; j<GeometryInfo<dim>::faces_per_cell; ++j)
   //     boundary_ids.insert (j);

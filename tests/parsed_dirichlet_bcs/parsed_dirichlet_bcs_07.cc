@@ -56,7 +56,7 @@ test(const Triangulation<dim> &tr, const FiniteElement<dim> &fe)
   dof.distribute_dofs(fe);
   deallog << "FE=" << fe.get_name() << std::endl;
 
-  ConstraintMatrix cm;
+  AffineConstraints<double> cm;
 
   // ConstantFunction<dim> constant_function(1.,dim);
   // typename FunctionMap<dim>::type function_map;

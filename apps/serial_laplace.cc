@@ -94,7 +94,7 @@ private:
   shared_ptr<FiniteElement<dim,dim> >             fe;
   shared_ptr<DoFHandler<dim> >       dof_handler;
 
-  ConstraintMatrix     constraints;
+  AffineConstraints<double>     constraints;
   SparsityPattern      sparsity_pattern;
   SparseMatrix<double> system_matrix;
 

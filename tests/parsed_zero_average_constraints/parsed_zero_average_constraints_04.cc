@@ -51,7 +51,7 @@ test(const Triangulation<dim> &tr, const FiniteElement<dim> &fe)
 
   deallog << "FE=" << fe.get_name() << std::endl;
 
-  ConstraintMatrix                  cm;
+  AffineConstraints<double>         cm;
   ParsedZeroAverageConstraints<dim> pnac("Parsed Zero Average Constraints",
                                          dim + 1,
                                          (dim == 2 ? "u,u,p" : "u,u,u,p"),

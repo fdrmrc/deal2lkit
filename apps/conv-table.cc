@@ -28,7 +28,7 @@
 #include <deal.II/lac/dynamic_sparsity_pattern.h>
 #include <deal.II/lac/solver_cg.h>
 #include <deal.II/lac/precondition.h>
-#include <deal.II/lac/constraint_matrix.h>
+#include <deal.II/lac/affine_constraints.h>
 #include <deal.II/grid/tria.h>
 #include <deal.II/grid/grid_generator.h>
 #include <deal.II/grid/grid_refinement.h>
@@ -206,7 +206,7 @@ namespace ConvTables
     shared_ptr<DoFHandler<dim> >        dof_handler;
 
 
-    ConstraintMatrix                        hanging_node_constraints;
+    AffineConstraints<double>                        hanging_node_constraints;
 
     SparsityPattern                         sparsity_pattern;
     SparseMatrix<double>                    system_matrix;

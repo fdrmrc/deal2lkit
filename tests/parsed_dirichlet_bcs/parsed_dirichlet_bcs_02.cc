@@ -140,16 +140,14 @@ FindBug<dim>::dirichlet_conditions()
   parsed_dirichlet.interpolate_boundary_values(dof_handler, dirichlet_dofs);
 
 
-  std::vector<bool>            fixed_dofs(dof_handler.n_dofs());
   std::set<types::boundary_id> boundary_ids;
   boundary_ids.insert(0);
 
   // get a list of those boundary DoFs which
   // we want to be fixed:
-  DoFTools::extract_boundary_dofs(dof_handler,
-                                  component_mask,
-                                  fixed_dofs,
-                                  boundary_ids);
+  const IndexSet &fixed_dofs =
+    DoFTools::extract_boundary_dofs(dof_handler, component_mask, boundary_ids);
+
 
   // (Primitive) Check if the DoFs
   // where adjusted correctly (note
@@ -159,7 +157,7 @@ FindBug<dim>::dirichlet_conditions()
   // component 0 by 0)
   for (unsigned int i = 0; i < dof_handler.n_dofs(); ++i)
     {
-      if (fixed_dofs[i] == true)
+      if (fixed_dofs.is_element(i))
         {
           AssertThrow(dirichlet_dofs[i] == 13, ExcInternalError());
         }
