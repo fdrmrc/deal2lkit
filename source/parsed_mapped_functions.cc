@@ -152,8 +152,13 @@ ParsedMappedFunctions<spacedim>::split_id_components(
                               ExcWrongComponent(id, m, n_components));
                   mask[m] = true;
                 }
-              catch (std::exception &exc) AssertThrow(
-                false, ExcWrongVariable(id, components[c], _all_components));
+              catch (std::exception &exc)
+                {
+                  AssertThrow(false,
+                              ExcWrongVariable(id,
+                                               components[c],
+                                               _all_components));
+                }
             }
         }
       id_components[id] = ComponentMask(mask);

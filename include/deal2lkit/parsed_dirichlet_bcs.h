@@ -20,7 +20,7 @@
 
 #include <deal.II/dofs/dof_handler.h>
 
-// old versions of dealii use ConstraintMatrix but the new versions
+// old versions of dealii use AffineConstraints<double> but the new versions
 // have switched to AffineConstraints<double>
 #if DEAL_II_VERSION_GTE(9, 1, 0)
 #  include <deal.II/lac/affine_constraints.h>
@@ -34,7 +34,7 @@ namespace dealii
   template <>
   struct ConstraintsHelper<double>
   {
-    using type = ConstraintMatrix;
+    using type = AffineConstraints<double>;
   };
 
   template <typename Number>
@@ -148,13 +148,13 @@ public:
    * these method calls the method of the Parent class
    */
   virtual void
-  declare_parameters(dealii::ParameterHandler &prm);
+  declare_parameters(dealii::ParameterHandler &prm) override;
 
   /**
    * these method calls the method of the Parent class
    */
   virtual void
-  parse_parameters_call_back();
+  parse_parameters_call_back() override;
 
   /**
    * This function must be called in order to apply the boundary conditions

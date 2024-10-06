@@ -52,7 +52,7 @@ public:
    * Declare local parameters.
    */
   virtual void
-  declare_parameters(dealii::ParameterHandler &prm);
+  declare_parameters(dealii::ParameterHandler &prm) override;
 
 
   /**

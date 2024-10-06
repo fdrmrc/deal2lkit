@@ -58,8 +58,10 @@ ParsedZeroAverageConstraints<dim, spacedim>::parse_parameters_call_back()
               mask[m] = true;
             }
           catch (std::exception &exc)
-            AssertThrow(false,
-                        ExcWrongVariable(components[c], _component_names));
+            {
+              AssertThrow(false,
+                          ExcWrongVariable(components[c], _component_names));
+            }
         }
     }
 
@@ -81,8 +83,12 @@ ParsedZeroAverageConstraints<dim, spacedim>::parse_parameters_call_back()
               AssertThrow(m < n_components, ExcWrongComponent(m, n_components));
               boundary_mask[m] = true;
             }
-          catch (std::exception &exc) AssertThrow(
-            false, ExcWrongVariable(boundary_components[c], _component_names));
+          catch (std::exception &exc)
+            {
+              AssertThrow(false,
+                          ExcWrongVariable(boundary_components[c],
+                                           _component_names));
+            }
         }
     }
 }
@@ -199,8 +205,8 @@ ParsedZeroAverageConstraints<dim, spacedim>::internal_zero_average_constraints(
 {
   if (at_boundary)
     {
-      std::vector<bool> constrained_dofs(dof_handler.n_dofs(), false);
-      DoFTools::extract_boundary_dofs(dof_handler, mask, constrained_dofs);
+      const IndexSet &constrained_dofs =
+        DoFTools::extract_boundary_dofs(dof_handler, mask, {});
 
       const unsigned int first_dof = std::distance(
         constrained_dofs.begin(),
@@ -208,7 +214,7 @@ ParsedZeroAverageConstraints<dim, spacedim>::internal_zero_average_constraints(
 
       constraints.add_line(first_dof);
       for (unsigned int i = first_dof + 1; i < dof_handler.n_dofs(); ++i)
-        if (constrained_dofs[i] == true)
+        if (constrained_dofs.is_element(i))
           constraints.add_entry(first_dof, i, -1);
     }
   else

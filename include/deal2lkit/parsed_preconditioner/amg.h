@@ -62,7 +62,7 @@ public:
    * Declare preconditioner options.
    */
   virtual void
-  declare_parameters(dealii::ParameterHandler &prm);
+  declare_parameters(dealii::ParameterHandler &prm) override;
 
   /**
    * Initialize the preconditioner using @p matrix. Constant modes are not computed.

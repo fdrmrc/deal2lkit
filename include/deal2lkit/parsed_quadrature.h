@@ -65,13 +65,13 @@ public:
    * Declare quadrature type and quadrature options.
    */
   virtual void
-  declare_parameters(dealii::ParameterHandler &prm);
+  declare_parameters(dealii::ParameterHandler &prm) override;
 
   /**
    * Fill information about blocks after parsing the parameters.
    */
   virtual void
-  parse_parameters_call_back();
+  parse_parameters_call_back() override;
 
 private:
   /**

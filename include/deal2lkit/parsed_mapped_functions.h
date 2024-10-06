@@ -140,13 +140,13 @@ public:
    * declare_parameters is inherithed by ParameterAcceptor
    */
   virtual void
-  declare_parameters(dealii::ParameterHandler &prm);
+  declare_parameters(dealii::ParameterHandler &prm) override;
 
   /**
    * parse_parameters_call_back is inherithed by ParameterAcceptor
    */
   virtual void
-  parse_parameters_call_back();
+  parse_parameters_call_back() override;
 
   /**
    * return true if there is a function that acts on the passed id

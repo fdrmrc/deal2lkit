@@ -129,7 +129,7 @@ public:
    * 1=DoFTools::always, 2=DoFTools::nonzero.
    */
   virtual void
-  declare_parameters(dealii::ParameterHandler &prm);
+  declare_parameters(dealii::ParameterHandler &prm) override;
 
   /**
    * Return a shared pointer to a newly created Finite Element. It
@@ -145,7 +145,7 @@ public:
    * Fill information about blocks after parsing the parameters.
    */
   virtual void
-  parse_parameters_call_back();
+  parse_parameters_call_back() override;
 
   /**
    * Return the component names for this Finite Element.

@@ -196,7 +196,7 @@ public:
    * Declare all parameters of this class.
    */
   virtual void
-  declare_parameters(dealii::ParameterHandler &prm);
+  declare_parameters(dealii::ParameterHandler &prm) override;
 
   /**
    * Return a unique pointer to a newly created serial Triangulation. It will

@@ -55,11 +55,11 @@ public:
 
   /** Initialize the given values for the paramter file. */
   virtual void
-  declare_parameters(dealii::ParameterHandler &prm);
+  declare_parameters(dealii::ParameterHandler &prm) override;
 
   /** Prepare names for output directories. */
   virtual void
-  parse_parameters_call_back();
+  parse_parameters_call_back() override;
 
   /** Prepare to output data on the given file. This will initialize
       the data_out object and a file with a filename that is the

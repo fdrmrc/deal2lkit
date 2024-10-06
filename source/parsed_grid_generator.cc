@@ -21,7 +21,7 @@
 #include <deal.II/grid/grid_tools.h>
 #include <deal.II/grid/manifold_lib.h>
 
-#include <deal.II/opencascade/boundary_lib.h>
+#include <deal.II/opencascade/manifold_lib.h>
 #include <deal.II/opencascade/utilities.h>
 
 #include <boost/archive/binary_iarchive.hpp>
@@ -939,7 +939,7 @@ struct PGGHelper
           }
         AssertThrow(false,
                     ExcInternalError(name +
-                                     " is not a valid manifold descriptor."))
+                                     " is not a valid manifold descriptor."));
       }
     return shared_ptr<Manifold<dim, spacedim>>();
   }
@@ -984,7 +984,7 @@ struct PGGHelper
           }
         AssertThrow(false,
                     ExcInternalError(name +
-                                     " is not a valid manifold descriptor."))
+                                     " is not a valid manifold descriptor."));
       }
     return shared_ptr<Manifold<dim, spacedim>>();
   }
@@ -1151,7 +1151,7 @@ ParsedGridGenerator<dim, spacedim>::get_smoothing()
       else
         Assert(false,
                ExcInternalError(
-                 "Found a non supported smoothing. Should not happen:" + s))
+                 "Found a non supported smoothing. Should not happen:" + s));
     }
   return static_cast<typename Triangulation<dim, spacedim>::MeshSmoothing>(
     smoothing);

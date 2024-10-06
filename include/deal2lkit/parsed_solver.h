@@ -93,19 +93,19 @@ public:
    * Declare solver type and solver options.
    */
   virtual void
-  declare_parameters(dealii::ParameterHandler &prm);
+  declare_parameters(dealii::ParameterHandler &prm) override;
 
   /**
    * Parse solver type and solver options.
    */
   virtual void
-  parse_parameters(dealii::ParameterHandler &prm);
+  parse_parameters(dealii::ParameterHandler &prm) override;
 
   /**
    * Initialize internal variables.
    */
   virtual void
-  parse_parameters_call_back();
+  parse_parameters_call_back() override;
 
 
   /**
@@ -155,7 +155,7 @@ private:
   /**
    * The actual solver.
    */
-  std::unique_ptr<dealii::Solver<VECTOR>> solver;
+  std::unique_ptr<dealii::SolverBase<VECTOR>> solver;
 };
 
 // ============================================================
